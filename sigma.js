@@ -13,7 +13,7 @@
  *     let count = properties.count;
  *
  *     const span = document.createElement('span');
- *     span.textContent = properties.count;
+ *     span.textContent = count;
  *
  *     add_callback('increment', () => {
  *       count += 1;
@@ -26,17 +26,21 @@
  *
  * // Instantiation
  * const counter = Counter();
- * const btn = document.createElement('button');
- * btn.textContent = '+';
- * btn.onclick = counter.callbacks.increment;
+ * const button = document.createElement('button');
+ * button.textContent = '+';
+ * button.onclick = counter.callbacks['increment'];
  *
- * document.body.appendChild(counter.element);
- * document.body.appendChild(btn);
+ * document.body.appendChild(counter.elements);
+ * document.body.appendChild(button);
  *
  * // Or as Web Component
- * component().properties({ count: 0 }).factory(...).define('my-counter');
+ * component()
+ *  .properties({ count: 0 })
+ *  .factory(...)
+ *  .define('my-counter');
+ *
  * // <my-counter count="5"></my-counter>
- * // <button onclick="document.querySelector('my-counter').increment()">+</button>
+ * // <button onclick="document.querySelector('my-counter')['increment']()">+</button>
  */
 
 /**
